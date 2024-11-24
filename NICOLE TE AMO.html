@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ser mi novia, Nicole?</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffe6f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            
+            background-image: url('C:\\Users\\USUARIO\\Downloads\\NICOLE\\fondo.png');
+            background-size: 120px 120px;
+            background-repeat: repeat;
+            background-position: center center;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 30px;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
+            width: 80%;
+            max-width: 500px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .container:hover {
+            transform: scale(1.05);
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #ff4081;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+            margin-bottom: 20px;
+            animation: bounce 2s infinite alternate;
+        }
+
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: #ff80ab;
+            clip-path: polygon(50% 0%, 100% 30%, 85% 100%, 50% 80%, 15% 100%, 0% 30%);
+            animation: float 5s infinite ease-in-out;
+            opacity: 0.7;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) scale(0.5);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        img {
+            width: 250px;
+            border-radius: 50%;
+            margin: 20px 0;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            border: 5px solid #ff80ab;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        img:hover {
+            transform: scale(1.1);
+        }
+
+        button {
+            background-color: #ff80ab;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 15px 30px;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ff4081;
+            transform: scale(1.1);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        .background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50%, #ff4081, #ff80ab);
+            animation: gradientShift 5s ease-in-out infinite;
+            z-index: -2;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background: radial-gradient(circle at 50%, #ff4081, #ff80ab);
+            }
+            50% {
+                background: radial-gradient(circle at 50%, #ff80ab, #ff4081);
+            }
+            100% {
+                background: radial-gradient(circle at 50%, #ff4081, #ff80ab);
+            }
+        }
+
+        .response {
+            display: none;
+            text-align: center;
+            font-size: 3em;
+            font-weight: bold;
+            color: #ff4081;
+            margin-top: 20px;
+        }
+
+        .response img {
+            width: 300px;
+            margin-top: 20px;
+            border-radius: 0;
+        }
+
+        .yes-response {
+            color: #33cc33;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .no-response {
+            color: #ff4d4d;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="background-animation"></div>
+
+    <div class="hearts">
+        <div class="heart" style="left: 20%; animation-delay: 0s;"></div>
+        <div class="heart" style="left: 40%; animation-delay: 2s;"></div>
+        <div class="heart" style="left: 60%; animation-delay: 4s;"></div>
+        <div class="heart" style="left: 80%; animation-delay: 6s;"></div>
+        <div class="heart" style="left: 10%; animation-delay: 3s;"></div>
+    </div>
+
+    <div class="container">
+        <h1>¿Quieres ser mi novia, Nicole?</h1>
+        <img src="C:\\Users\\USUARIO\\Downloads\\NICOLE\\pig.gif" alt="Chanchito Cute">
+        <button onclick="showResponse('yes')">Sí</button>
+        <button onclick="showResponse('no')">No</button>
+    </div>
+
+    <!-- Respuesta para "Sí" -->
+    <div id="responseYes" class="response yes-response">
+        <p>¡TE AMO!</p>
+        <div style="font-size: 5em; color: #ff4081;">❤️</div>
+    </div>
+
+    <!-- Respuesta para "No" -->
+    <div id="responseNo" class="response no-response">
+        <p>No me amas :c</p>
+        <img src="C:\\Users\\USUARIO\\Downloads\\NICOLE\\frenchie triste.png" alt="Frenchie Triste">
+    </div>
+
+    <script>
+        function showResponse(answer) {
+            // Ocultar ambos mensajes
+            document.getElementById('responseYes').style.display = 'none';
+            document.getElementById('responseNo').style.display = 'none';
+            
+            // Mostrar respuesta basada en la elección
+            if (answer === 'yes') {
+                document.getElementById('responseYes').style.display = 'block';
+            } else if (answer === 'no') {
+                document.getElementById('responseNo').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
+
